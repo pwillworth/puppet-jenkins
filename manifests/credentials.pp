@@ -33,11 +33,12 @@ define jenkins::credentials (
 
   case $ensure {
     'present': {
+      $secret_password = Sensitive($password)
       jenkins::cli::exec { "create-jenkins-credentials-${title}":
         command => [
           'create_or_update_credentials',
           $title,
-          "'${password}'",
+          "'${secret_password}'",
           "'${uuid}'",
           "'${description}'",
           "'${private_key_or_path}'",

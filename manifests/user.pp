@@ -33,12 +33,13 @@ define jenkins::user (
   case $ensure {
     'present': {
       # XXX not idempotent
+      $secret_password = Sensitive($password)
       jenkins::cli::exec { "create-jenkins-user-${title}":
         command => [
           'create_or_update_user',
           $title,
           $email,
-          "'${password}'",
+          "'${secret_password}'",
           "'${full_name}'",
           "'${public_key}'",
         ],
