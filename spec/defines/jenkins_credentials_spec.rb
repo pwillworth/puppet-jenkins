@@ -37,7 +37,7 @@ describe 'jenkins::credentials', type: :define do
     end
 
     it {
-      is_expected.to contain_jenkins__cli__exec('create-jenkins-credentials-foo').with(command: ['create_or_update_credentials', title.to_s, "'mypass'",
+      is_expected.to contain_jenkins__cli__exec('create-jenkins-credentials-foo').with(command: ['create_or_update_credentials', title.to_s, "'Sensitive [value redacted]'",
                                                                                                  "''", "'Managed by Puppet'", "''"],
                                                                                        unless: "for i in \$(seq 1 10); do \$HELPER_CMD credential_info #{title} && break || sleep 10; done | grep #{title}")
     }
@@ -64,7 +64,7 @@ describe 'jenkins::credentials', type: :define do
     end
 
     it {
-      is_expected.to contain_jenkins__cli__exec('create-jenkins-credentials-foo').with(command: ['create_or_update_credentials', title.to_s, "'mypass'",
+      is_expected.to contain_jenkins__cli__exec('create-jenkins-credentials-foo').with(command: ['create_or_update_credentials', title.to_s, "'Sensitive [value redacted]'",
                                                                                                  "'e94d3b98-5ba4-43b9-89ed-79a08ea97f6f'", "'Managed by Puppet'", "''"],
                                                                                        unless: "for i in \$(seq 1 10); do \$HELPER_CMD credential_info #{title} && break || sleep 10; done | grep #{title}")
     }
