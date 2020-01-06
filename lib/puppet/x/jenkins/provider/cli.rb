@@ -292,12 +292,13 @@ class Puppet::X::Jenkins::Provider::Cli < Puppet::Provider
       end
       return superclass.execute([cmd].flatten.join(' '), options)
     rescue Puppet::ExecutionFailure => e
+      Puppet.debug('Initiating excpetion conversion checks.')
       cli_auth_errors.each do |error|
-        raise AuthError, e.message, e.backtrace if e.message.match(error)
+        raise AuthError, e.message, e.backtrace if e.message.match(".*#{error}.*")
       end
 
       net_errors.each do |error|
-        raise NetError, e.message, e.backtrace if e.message.match(error)
+        raise NetError, e.message, e.backtrace if e.message.match(".*#{error}.*")
       end
 
       raise UnknownError, e.message, e.backtrace
