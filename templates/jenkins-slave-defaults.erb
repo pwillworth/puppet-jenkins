@@ -3,6 +3,8 @@
 # XXX due to the use of conditional statements and variable interpolation,
 # this file can not be used in its current state as a systemd EnvironmentFile.
 
+# Include users .local/bin in HOME for tenv commands
+PATH="$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin"
 # location of java
 JAVA=<%= @java_cmd %>
 
