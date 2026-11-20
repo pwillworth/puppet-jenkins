@@ -66,11 +66,11 @@ if [ -n "$TOOL_LOCATIONS" ]; then
   done
 fi
 
-<% if $jenkins::slave::env_vars { -%>
-  <% $jenkins::slave::env_vars.each |$env_name, $env_value| { -%>
-    SLAVE_ARGS+=(--env "<%= $env_name=$env_value -%>")
-  <% } -%>
-<% } -%>
+<% if @jenkins::slave::env_vars -%>
+<% @jenkins::slave::env_vars.each do |env_name, env_value| -%>
+SLAVE_ARGS+=(--env "<%= $env_name%>=<%= $env_value %>")
+<% end -%>
+<% end -%>
 
 [[ -n "$OTHER_ARGS" ]] &&
   SLAVE_ARGS+=($OTHER_ARGS)
