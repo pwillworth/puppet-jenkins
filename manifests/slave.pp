@@ -1,4 +1,4 @@
-# == Class: jenkins::slave
+#sh == Class: jenkins::slave
 #
 # This module setups up a swarm client for a jenkins server.  It requires the swarm plugin on the Jenkins master.
 #
@@ -68,8 +68,7 @@
 #   as 'toolName:location'.
 #
 # [*env_vars*]
-#   Not required.  Single string of whitespace-separated list of Environment Variables to be defined on this slave. An env var is specified
-#   as 'variableName:value'.
+#   Not required.  Hash of Environment Variables to be defined on this slave. Must be a hash with some number of string keys and string values
 #
 # [*description*]
 #   Not required.  Description which will appear on the jenkins master UI.
