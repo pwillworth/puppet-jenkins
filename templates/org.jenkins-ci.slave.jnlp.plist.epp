@@ -73,7 +73,7 @@
     <% if @env_vars -%>
     <% @env_vars.each do |env_name, env_value| -%>
     <string>-env</string>
-    <string><%= $env_name%>=<%= $env_value %></string>
+    <string><%= env_name%>=<%= env_value %></string>
     <% end -%>
     <% end -%>
     <% unless empty($jenkins::slave::swarm_client_args) { -%>

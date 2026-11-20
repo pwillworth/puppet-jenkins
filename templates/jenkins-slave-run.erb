@@ -68,7 +68,7 @@ fi
 
 <% if @env_vars -%>
 <% @env_vars.each do |env_name, env_value| -%>
-SLAVE_ARGS+=(--env "<%= $env_name%>=<%= $env_value %>")
+SLAVE_ARGS+=(--env "<%= env_name%>=<%= env_value %>")
 <% end -%>
 <% end -%>
 
