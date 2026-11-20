@@ -67,6 +67,10 @@
 #   Not required.  Single string of whitespace-separated list of tool locations to be defined on this slave. A tool location is specified
 #   as 'toolName:location'.
 #
+# [*env_vars*]
+#   Not required.  Single string of whitespace-separated list of Environment Variables to be defined on this slave. An env var is specified
+#   as 'variableName:value'.
+#
 # [*description*]
 #   Not required.  Description which will appear on the jenkins master UI.
 #
@@ -121,6 +125,7 @@ class jenkins::slave (
   Optional[String] $ui_user               = undef,
   Optional[String] $ui_pass               = undef,
   Optional[String] $tool_locations        = undef,
+  Optional[Hash[String, String] $env_vars = undef,
   Optional[String] $source                = undef,
   Optional[String] $proxy_server          = undef,
   Optional[Jenkins::Tunnel] $tunnel       = undef,
