@@ -1,4 +1,4 @@
-#sh == Class: jenkins::slave
+# == Class: jenkins::slave
 #
 # This module setups up a swarm client for a jenkins server.  It requires the swarm plugin on the Jenkins master.
 #
